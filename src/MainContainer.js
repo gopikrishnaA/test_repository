@@ -29,7 +29,6 @@ export class MainContainer extends Component {
         const converter = new Converter({noheader:true});
         let self = this;
         converter.fromString(csvString, function(err,result){
-            console.log(JSON.stringify(result))
             self.setState({
                 uploadedData: JSON.stringify(result)
             })
@@ -45,7 +44,6 @@ export class MainContainer extends Component {
                 .end(function (response) {
                     if (response.ok) {
                         const data = JSON.stringify(response.body)
-                        console.log(data)
                         self.setState({
                             seriesData: response.body
                         })
@@ -57,21 +55,18 @@ export class MainContainer extends Component {
         })
     }
     clickOnParticularLink(value) {
-        console.log('index', value)
         let self = this;
         new Promise(function updateButton (resolve, reject) {
             request.get(`http://localhost:3002/show/${value}`)
                 .type('application/json')
                 .end(function (response) {
                     if (response.ok) {
-                        console.log(response.body[0])
                         let arrayData = response.body[0];
                         let graphData = [];
                         Object.keys(arrayData).forEach(function (key) {
                             const obj = arrayData[key].split('|');
                             graphData.push({name: obj[0], score: parseInt(obj[1])});
                         });
-                        console.log(JSON.stringify(graphData))
                         self.setState({
                             data: graphData
                         });
