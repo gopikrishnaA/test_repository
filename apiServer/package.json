@@ -1,0 +1,27 @@
+{
+  "name": "ApiServer",
+  "version": "1.0.0",
+  "description": "Api server for storing csv values",
+  "main": "index.js",
+  "keywords": [
+    "database-api,plugboard"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "The Team",
+  "license": "ISC",
+  "devDependencies": {
+    "cors": "^2.8.3",
+    "proxyquire": "1.7.4",
+    "server-destroy": "1.0.1"
+  },
+  "dependencies": {
+    "body-parser": "1.15.0",
+    "co": "4.6.0",
+    "express": "4.13.4",
+    "mongoose": "^4.9.7",
+    "node-cron": "1.1.1",
+    "nodemon": "^1.11.0"
+  }
+}
